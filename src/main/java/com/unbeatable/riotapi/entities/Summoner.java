@@ -3,7 +3,7 @@ package com.unbeatable.riotapi.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash('Summoner')
+@RedisHash("Summoner")
 public class Summoner {
     @Id private String accountId;
     private int profileIconId;
@@ -13,7 +13,7 @@ public class Summoner {
     private String puuid;
     private String summonerLevel;
 
-    public Summoner(accountId,profileIconId,revisionDate,name,id,puuid,summonerLevel){
+    public Summoner(String accountId, int profileIconId, long revisionDate,String name,int id,String puuid,String summonerLevel){
         this.accountId = accountId;
         this.profileIconId = profileIconId;
         this.revisionDate = revisionDate;
@@ -51,9 +51,7 @@ public class Summoner {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public int getId() {
         return id;
