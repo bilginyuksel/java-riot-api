@@ -4,16 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.unbeatable.riotapi.entities.Summoner;
+
+
 public class SummonerControllerTest extends TestConfig {
     @Override
     @Before
     public void setUp() {
         super.setUp();
     }
+
+    @Test
     public void getSummonerByName() throws Exception {
         String uri = "/summoners/by-name/Mckcan";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
