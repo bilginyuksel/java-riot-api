@@ -1,19 +1,19 @@
-package com.unbeatable.riotapi;
+package com.unbeatable.riotapi.controllerTests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import com.unbeatable.riotapi.TestConfig;
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import com.unbeatable.riotapi.entities.Summoner;
+import static org.junit.Assert.*;
 public class SummonerControllerTest extends TestConfig {
     @Override
     @Before
     public void setUp() {
         super.setUp();
     }
+    @Test
     public void getSummonerByName() throws Exception {
         String uri = "/summoners/by-name/Mckcan";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
@@ -21,8 +21,8 @@ public class SummonerControllerTest extends TestConfig {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        Summoner[] summonerList = super.mapFromJson(content, Summoner[].class);
-        assertTrue(summonerList.length > 0);
+        assertNotNull(content);
+        assertEquals("Mckcan",content);
     }
 
 }
