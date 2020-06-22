@@ -1,12 +1,13 @@
 package com.unbeatable.riotapi.client.repository;
 
+import org.springframework.http.ResponseEntity;
+
 public interface RiotSummonerRepository {
 
     String summonerURL = "/lol/summoner/v4/summoners/";
 
-
-    Object findSummonerByName(String summonerName);
-    Object findSummonerByAccountID(String accountID);
-    Object findSummonerByPUUID(String puuid);
-    Object findSummonerBySummonerID(String summonerID);
+    ResponseEntity<String> findSummonerByName(String summonerName);
+    ResponseEntity<String> findSummonerByAccountID(String accountID);
+    ResponseEntity<String> findSummonerByPUUID(String puuid);
+    ResponseEntity<String> findSummonerBySummonerID(String summonerID);
 }

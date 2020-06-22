@@ -1,28 +1,33 @@
 package com.unbeatable.riotapi.client.impl;
 
 import com.unbeatable.riotapi.client.repository.RiotMatchesRepository;
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
 
 public class RiotMatchesRepositoryImpl implements RiotMatchesRepository {
 
     private String riotMatchesApiURL = RiotClient.BASE_URL + matchesURL;
+    private RiotImplementationUtil util;
+
+    public RiotMatchesRepositoryImpl(){
+        util = new RiotImplementationUtil();
+    }
 
     @Override
-    public Object findMatchByMatchID(Long matchID) {
+    public ResponseEntity<String> findMatchByMatchID(Long matchID) {
         riotMatchesApiURL += "matches/"+matchID.toString();
-        return null;
+        return util.getExchangedResponse(riotMatchesApiURL, String.class);
     }
 
     @Override
-    public List<Object> findMatchListByAccountID(String accountID) {
+    public ResponseEntity<String> findMatchListByAccountID(String accountID) {
         riotMatchesApiURL += "matchlists/by-account/"+accountID;
-        return null;
+        return util.getExchangedResponse(riotMatchesApiURL, String.class);
     }
 
     @Override
-    public Object findMatchTimelineByMatchID(Long matchID) {
+    public ResponseEntity<String> findMatchTimelineByMatchID(Long matchID) {
         riotMatchesApiURL += "timelines/by-match/"+matchID.toString();
-        return null;
+        return util.getExchangedResponse(riotMatchesApiURL, String.class);
     }
 }
