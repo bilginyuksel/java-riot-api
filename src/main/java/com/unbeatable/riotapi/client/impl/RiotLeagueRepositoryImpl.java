@@ -4,45 +4,46 @@ import com.unbeatable.riotapi.client.LeagueDivison;
 import com.unbeatable.riotapi.client.LeagueQueue;
 import com.unbeatable.riotapi.client.LeagueTier;
 import com.unbeatable.riotapi.client.repository.RiotLeagueRepository;
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
 
 public class RiotLeagueRepositoryImpl implements RiotLeagueRepository {
 
     private String riotRepositoryApiURL = RiotClient.BASE_URL + leagueURL;
 
     @Override
-    public List<Object> findChallengerRiotSummonersByQueue(LeagueQueue queue) {
+    public ResponseEntity<String> findChallengerRiotSummonersByQueue(LeagueQueue queue) {
         riotRepositoryApiURL += "challengerleagues/by-queue/"+queue.toString();
+        // parse process
         return null;
     }
 
     @Override
-    public List<Object> findGrandmasterSummonersByQueue(LeagueQueue queue) {
+    public ResponseEntity<String> findGrandmasterSummonersByQueue(LeagueQueue queue) {
         riotRepositoryApiURL += "grandmasterleagues/by-queue/"+queue.toString();
         return null;
     }
 
     @Override
-    public List<Object> findMasterSummonersByQueue(LeagueQueue queue) {
+    public ResponseEntity<String> findMasterSummonersByQueue(LeagueQueue queue) {
         riotRepositoryApiURL += "masterleagues/by-queue/"+queue.toString();
         return null;
     }
 
     @Override
-    public Object findSummonersLeagueEntriesBySummonerID(String summonerID) {
+    public ResponseEntity<String> findSummonersLeagueEntriesBySummonerID(String summonerID) {
         riotRepositoryApiURL += "entries/by-summoner/"+summonerID;
         return null;
     }
 
     @Override
-    public Object findSummonersLeagueEntriesByLeagueID(String leagueID) {
+    public ResponseEntity<String> findSummonersLeagueEntriesByLeagueID(String leagueID) {
         riotRepositoryApiURL += "leagues/"+leagueID;
         return null;
     }
 
     @Override
-    public Object findAllLeagueEntriesByQueueAndByTierAndByDivison(LeagueQueue queue,
+    public ResponseEntity<String> findAllLeagueEntriesByQueueAndByTierAndByDivison(LeagueQueue queue,
                                                                    LeagueTier tier,
                                                                    LeagueDivison divison) {
 
