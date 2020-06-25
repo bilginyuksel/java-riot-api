@@ -1,10 +1,9 @@
 package com.unbeatable.riotapi.entities;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash("Summoner")
-public class Summoner {
+import java.io.Serializable;
+
+public class Summoner implements Serializable {
     @Id private String accountId;
     private int profileIconId;
     private long revisionDate;
@@ -12,6 +11,7 @@ public class Summoner {
     private int id;
     private String puuid;
     private String summonerLevel;
+
 
     public Summoner(String accountId, int profileIconId, long revisionDate,String name,int id,String puuid,String summonerLevel){
         this.accountId = accountId;
@@ -51,7 +51,9 @@ public class Summoner {
         return name;
     }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
