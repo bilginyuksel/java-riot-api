@@ -23,6 +23,7 @@ public class RiotImplementationUtil {
     }
 
     protected ResponseEntity<String> getExchangedResponse(String url, Class s){
+        RiotClientApiCounterService.makeRiotApiCall();
         ResponseEntity<String> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
