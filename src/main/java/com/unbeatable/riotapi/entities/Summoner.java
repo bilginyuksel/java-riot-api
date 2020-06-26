@@ -1,26 +1,25 @@
 package com.unbeatable.riotapi.entities;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-
+@Entity
 public class Summoner implements Serializable {
-    @Id private String accountId;
-    private int profileIconId;
-    private long revisionDate;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) private long summonerId;
+    private String id, accountId, puuid;
     private String name;
-    private int id;
-    private String puuid;
-    private String summonerLevel;
+    private int profileIconId, summonerLevel;
+    private long revisionDate;
 
 
-    public Summoner(String accountId, int profileIconId, long revisionDate,String name,int id,String puuid,String summonerLevel){
-        this.accountId = accountId;
-        this.profileIconId = profileIconId;
-        this.revisionDate = revisionDate;
-        this.name = name;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
-        this.puuid = puuid;
-        this.summonerLevel = summonerLevel;
     }
 
     public String getAccountId() {
@@ -31,20 +30,12 @@ public class Summoner implements Serializable {
         this.accountId = accountId;
     }
 
-    public int getProfileIconId() {
-        return profileIconId;
+    public String getPuuid() {
+        return puuid;
     }
 
-    public void setProfileIconId(int profileIconId) {
-        this.profileIconId = profileIconId;
-    }
-
-    public long getRevisionDate() {
-        return revisionDate;
-    }
-
-    public void setRevisionDate(long revisionDate) {
-        this.revisionDate = revisionDate;
+    public void setPuuid(String puuid) {
+        this.puuid = puuid;
     }
 
     public String getName() {
@@ -55,27 +46,28 @@ public class Summoner implements Serializable {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getProfileIconId() {
+        return profileIconId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProfileIconId(int profileIconId) {
+        this.profileIconId = profileIconId;
     }
 
-    public String getPuuid() {
-        return puuid;
-    }
-
-    public void setPuuid(String puuid) {
-        this.puuid = puuid;
-    }
-
-    public String getSummonerLevel() {
+    public int getSummonerLevel() {
         return summonerLevel;
     }
 
-    public void setSummonerLevel(String summonerLevel) {
+    public void setSummonerLevel(int summonerLevel) {
         this.summonerLevel = summonerLevel;
     }
+
+    public long getRevisionDate() {
+        return revisionDate;
+    }
+
+    public void setRevisionDate(long revisionDate) {
+        this.revisionDate = revisionDate;
+    }
+
 }
