@@ -40,9 +40,9 @@ public class RedisCacheTests {
         int val = RiotClientApiCounterService.getGeneralApiCount();
 
 
-        ResponseEntity<Summoner> summonerResponseEntity1 = summonerController.getSummoner("");
-        ResponseEntity<Summoner> summonerResponseEntity2 = summonerController.getSummoner("name2");
-        ResponseEntity<Summoner> summonerResponseEntity3 = summonerController.getSummoner("name3");
+        ResponseEntity<Summoner> summonerResponseEntity1 = summonerController.getSummoner("mckcan");
+        ResponseEntity<Summoner> summonerResponseEntity2 = summonerController.getSummoner("hasan");
+        ResponseEntity<Summoner> summonerResponseEntity3 = summonerController.getSummoner("piuvv");
 
         Assert.assertNotNull("Check the API call and the summoner controller or run the riot client tests to find the issue..", summonerResponseEntity1);
         Assert.assertNotNull("Check the API call and the summoner controller or run the riot client tests to find the issue..", summonerResponseEntity2);
