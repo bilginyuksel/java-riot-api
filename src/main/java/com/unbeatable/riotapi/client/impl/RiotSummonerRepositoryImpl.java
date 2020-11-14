@@ -5,38 +5,33 @@ import org.springframework.http.ResponseEntity;
 
 public class RiotSummonerRepositoryImpl implements RiotSummonerRepository {
 
-    private String summonerRepositoryApiUrl = RiotClient.BASE_URL + summonerURL;
-    private RiotImplementationUtil util;
+    private final static String URL_PREFIX = RiotClient.BASE_URL + summonerURL;
+    private final RiotImplementationUtil util;
 
     public RiotSummonerRepositoryImpl(){
         util = new RiotImplementationUtil();
     }
-    private void clearURL(){summonerRepositoryApiUrl = RiotClient.BASE_URL + summonerURL;}
     @Override
     public ResponseEntity<String> findSummonerByName(String summonerName) {
-        clearURL();
-        summonerRepositoryApiUrl += "by-name/"+summonerName;
-        return util.getExchangedResponse(summonerRepositoryApiUrl, String.class);
+        String url = URL_PREFIX + "by-name/"+summonerName;
+        return util.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findSummonerByAccountID(String accountID) {
-        clearURL();
-        summonerRepositoryApiUrl += "by-account/"+accountID;
-        return util.getExchangedResponse(summonerRepositoryApiUrl, String.class);
+        String url = URL_PREFIX + "by-account/"+accountID;
+        return util.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findSummonerByPUUID(String puuid) {
-        clearURL();
-        summonerRepositoryApiUrl += "by-puuid/" + puuid;
-        return util.getExchangedResponse(summonerRepositoryApiUrl, String.class);
+        String url = URL_PREFIX + "by-puuid/" + puuid;
+        return util.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findSummonerBySummonerID(String summonerID) {
-        clearURL();
-        summonerRepositoryApiUrl += summonerID;
-        return util.getExchangedResponse(summonerRepositoryApiUrl, String.class);
+        String url = URL_PREFIX + summonerID;
+        return util.getExchangedResponse(url, String.class);
     }
 }

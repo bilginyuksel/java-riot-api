@@ -9,55 +9,48 @@ import org.springframework.http.ResponseEntity;
 
 public class RiotLeagueRepositoryImpl implements RiotLeagueRepository {
 
-    private String riotRepositoryApiURL = RiotClient.BASE_URL + leagueURL;
-    private RiotImplementationUtil riotImplementationUtil;
+    private final static String URL_PREFIX = RiotClient.BASE_URL + leagueURL;
+    private final RiotImplementationUtil riotImplementationUtil;
 
     public RiotLeagueRepositoryImpl(){
       riotImplementationUtil = new RiotImplementationUtil();
     }
-    private void clearURL() {riotRepositoryApiURL = RiotClient.BASE_URL + leagueURL;}
 
     @Override
     public ResponseEntity<String> findChallengerRiotSummonersByQueue(LeagueQueue queue) {
-        clearURL();
-        riotRepositoryApiURL += "challengerleagues/by-queue/"+queue.toString();
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url = URL_PREFIX + "challengerleagues/by-queue/"+queue.toString();
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findGrandmasterSummonersByQueue(LeagueQueue queue) {
-        clearURL();
-        riotRepositoryApiURL += "grandmasterleagues/by-queue/"+queue.toString();
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url = URL_PREFIX + "grandmasterleagues/by-queue/"+queue.toString();
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findMasterSummonersByQueue(LeagueQueue queue) {
-        clearURL();
-        riotRepositoryApiURL += "masterleagues/by-queue/"+queue.toString();
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url = URL_PREFIX + "masterleagues/by-queue/"+queue.toString();
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findSummonersLeagueEntriesBySummonerID(String summonerID) {
-        clearURL();
-        riotRepositoryApiURL += "entries/by-summoner/"+summonerID;
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url =  "entries/by-summoner/"+summonerID;
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findSummonersLeagueEntriesByLeagueID(String leagueID) {
-        clearURL();
-        riotRepositoryApiURL += "leagues/"+leagueID;
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url = URL_PREFIX + "leagues/"+leagueID;
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 
     @Override
     public ResponseEntity<String> findAllLeagueEntriesByQueueAndByTierAndByDivison(LeagueQueue queue,
                                                                    LeagueTier tier,
                                                                    LeagueDivison divison) {
-        clearURL();
-        riotRepositoryApiURL += "entries/"+queue.toString()+"/"+tier.toString()+"/"+divison.toString();
-        return riotImplementationUtil.getExchangedResponse(riotRepositoryApiURL, String.class);
+        String url = URL_PREFIX + "entries/"+queue.toString()+"/"+tier.toString()+"/"+divison.toString();
+        return riotImplementationUtil.getExchangedResponse(url, String.class);
     }
 }

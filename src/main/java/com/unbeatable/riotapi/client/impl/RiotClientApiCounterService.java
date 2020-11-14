@@ -4,9 +4,9 @@ public class RiotClientApiCounterService {
 
     protected static final int tenMinuteLimit = 30000;
     protected static final int tenSecondLimit = 500;
-    private static int generalApiCount = 0;
-    private static int tenMinuteApiCount = 0;
-    private static int tenSecondApiCount = 0;
+    private volatile static int generalApiCount = 0;
+    private volatile static int tenMinuteApiCount = 0;
+    private volatile static int tenSecondApiCount = 0;
 
     public static final int getGeneralApiCount(){
         return generalApiCount;
@@ -20,7 +20,7 @@ public class RiotClientApiCounterService {
         return tenSecondApiCount;
     }
 
-    protected static void makeRiotApiCall(){
+    protected synchronized static void makeRiotApiCall(){
         generalApiCount++;
         tenMinuteApiCount++;
         tenSecondApiCount++;
